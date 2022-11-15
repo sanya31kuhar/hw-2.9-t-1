@@ -4,10 +4,9 @@ public class Product {
 
     private final String name;
     private Float price;
-    private Float weight;
     private boolean isBought = false;
 
-    public Product(String name, Float price, Float weight) {
+    public Product(String name, Float price) {
         if ((name == null) || name.isBlank()) {
             System.out.println("Заполните карточку товара полностью");
             throw new IllegalArgumentException();
@@ -15,7 +14,6 @@ public class Product {
             this.name = name;
         }
         setPrice(price);
-        setWeight(weight);
     }
 
     String getName() {
@@ -26,25 +24,12 @@ public class Product {
         return price;
     }
 
-    Float getWeight() {
-        return weight;
-    }
-
     public void setPrice(Float price) {
         if (price == null || price <= 0) {
             System.out.println("Заполните карточку товара полностью");
             throw new IllegalArgumentException();
         } else {
             this.price = price;
-        }
-    }
-
-    public void setWeight(Float weight) {
-        if (weight == null || weight <= 0) {
-            System.out.println("Заполните карточку товара полностью");
-            throw new IllegalArgumentException();
-        } else {
-            this.weight = weight;
         }
     }
 
@@ -58,7 +43,7 @@ public class Product {
         if (isBought) {
             c = '+';
         }
-        return String.format("%s, %.2f руб., %.3f кг, %c\n", name, price, weight, c);
+        return String.format("%s, %.2f руб., %c", name, price, c);
     }
 
     @Override
